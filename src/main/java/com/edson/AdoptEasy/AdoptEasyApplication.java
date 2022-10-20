@@ -14,6 +14,6 @@ public class AdoptEasyApplication {
 	}
 	@GetMapping("/")
 	public String index() {
-		return "Olá mundo!";
+		return "adote pet";
 	}
 }
