@@ -12,6 +12,12 @@ public class PetCor {
 		this.ativo = ativo;
 	}
 
+	public PetCor(String cor) {
+		super();
+
+		this.cor = cor;
+	}
+
 	public PetCor() {
 		super();
 	}

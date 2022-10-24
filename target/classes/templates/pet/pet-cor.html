@@ -160,9 +160,23 @@
 		<!-- Copyright -->
 	</footer>
 	<!--js boostrap-->
-	<script src="./js/bootstrap.js"></script>
+	<script src="../js/bootstrap.js"></script>
 	<script>
-		const carousel = new bootstrap.Carousel('#myCarousel')
+	
+        $(document).ready(function () {
+            // $('.carousel').carousel();
+            $('.carouselExampleCaptions').carousel({
+                padding: 200
+            });
+            autoplay();
+            function autoplay() {
+                $('.carouselExampleCaptions').carousel('next');
+                setTimeout(autoplay, 4500);
+            }
+
+        });
+      
+
 	</script>
 </body>
 
