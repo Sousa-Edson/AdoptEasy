@@ -1,7 +1,7 @@
 package com.edson.AdoptEasy.model;
 
 public class PetCor {
-	private int id=0;
+	private int id;
 	private String cor;
 	private boolean ativo;
 
@@ -10,11 +10,6 @@ public class PetCor {
 		this.id = id;
 		this.cor = cor;
 		this.ativo = ativo;
-	}
-
-	public PetCor(String cor) {
-		super();
-		this.cor = cor;
 	}
 
 	public PetCor() {

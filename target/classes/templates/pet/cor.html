@@ -12,7 +12,8 @@
 		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
 
 	<!-- css boostrap -->
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+	<!--<link rel="stylesheet" href="/bootstrap/css/bootstrap.css" /> -->
+	 <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" />
 	<!-- css custon -->
 	<link rel="stylesheet" href="../custon.css" />
 	<!--icon boostrap -->
@@ -105,11 +106,11 @@
 							</div>
 							<!-- /.card-header -->
 							<!-- form start -->
-							<form action="/pet/cor" method="post">
+							<form action="/pet/cor" method="post" >
 								<div class="card-body">
 									<div class="form-group ">
 										<label for="nome-cor">Digite aqui nome da cor</label>
-										<input type="text" class="form-control " id="cor" name="cor"
+										<input type="text" class="form-control " id="cor" name="cor"   th:value="${c.cor}"
 											placeholder="Digite uma cor ">
 									</div>
 								</div>
@@ -137,14 +138,15 @@
 										</tr>
 									</thead>
 									<tbody>
-									<tr th:each="cor : ${cor}">
-									
+										<tr th:each="cor : ${cor}">
 
-											<td>1.</td>
+
+											<td><span th:text="${cor.id}"></span>.</td>
 											<td><span th:text="${cor.cor}"></span></td>
 											<td>
 												<div class="btn-group">
-													<a href="#" class="btn btn-info"> <i class="bi bi-pencil"></i></a>
+													<a th:href="@{/pet/cor/{id}(id=${cor.id})}" class="btn btn-info">
+														<i class="bi bi-pencil"></i></a>
 													<a href="#" class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 												</div>
 											</td>
