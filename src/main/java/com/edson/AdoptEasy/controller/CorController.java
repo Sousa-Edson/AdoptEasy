@@ -22,16 +22,28 @@ public class CorController {
 
 	@PostMapping("/pet/cor")
 	public ModelAndView novo(PetCor cor) {
-		
-		cor.setId(idCor(cor));
-		cor.setAtivo(true);
-		
-		System.out.println(cor.getId());
+
 		ModelAndView mv = new ModelAndView("redirect:../pet/cor");
-		if (cor.getCor().length() < 2) {
+		if (cor.getId() == 0) {
+			cor.setId(idCor(cor));
+
+			if (cor.getCor().length() < 2) {
+			} else {
+				listaPetCor.add(cor);
+			}
 		} else {
-			listaPetCor.add(cor);
+			int i = 0;
+			for (PetCor petCor : listaPetCor) {
+				if (petCor.getId() == cor.getId()) {
+					listaPetCor.set(i, cor);
+				}
+				i++;
+			}
+			System.out.println("tentando alterar -> " + cor.getId());
 		}
+		cor.setAtivo(true);
+
+		System.out.println(cor.getId());
 
 		// insert no banco de dados
 		mv.addObject("cor", cor);
@@ -41,16 +53,17 @@ public class CorController {
 
 	@GetMapping("/pet/cor")
 	public String list(Model model) {
-		model.addAttribute("c",new PetCor());
+		model.addAttribute("c", new PetCor());
 		model.addAttribute("cor", listaPetCor);
 		return "pet/cor";
 	}
-	
+
 	@GetMapping("/pet/cor/{id}")
 	public String detalhe(@PathVariable("id") int id, Model model) {
 		for (PetCor c : listaPetCor) {
 			if (c.getId() == id) {
 				model.addAttribute("c", c);
+				model.addAttribute("cor", listaPetCor);
 				break;
 			}
 		}
