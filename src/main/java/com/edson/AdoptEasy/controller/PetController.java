@@ -3,7 +3,6 @@ package com.edson.AdoptEasy.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Controller
 public class PetController {
@@ -35,11 +34,11 @@ public class PetController {
 
 	@GetMapping("/pet")
 	public String novo() {
-		return "pet/home";
+		return "pet/index";
 	}
 	@PostMapping("/pet")
 	public String home() {
-		return "pet/home";
+		return "pet/index";
 	}
 	@GetMapping("/pet/login")
 	public String login() {
