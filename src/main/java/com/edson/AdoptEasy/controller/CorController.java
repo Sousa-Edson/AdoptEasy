@@ -20,10 +20,10 @@ public class CorController {
 		return listaPetCor.size() + 1;
 	}
 
-	@PostMapping("/pet/cor")
+	@PostMapping("/pet/pet-cor")
 	public ModelAndView novo(PetCor cor) {
 
-		ModelAndView mv = new ModelAndView("redirect:../pet/cor");
+		ModelAndView mv = new ModelAndView("redirect:../pet/pet-cor");
 		if (cor.getId() == 0) {
 			cor.setId(idCor(cor));
 
@@ -51,14 +51,14 @@ public class CorController {
 		return mv;
 	}
 
-	@GetMapping("/pet/cor")
+	@GetMapping("/pet/pet-cor")
 	public String list(Model model) {
 		model.addAttribute("c", new PetCor());
 		model.addAttribute("cor", listaPetCor);
-		return "pet/cor";
+		return "pet/pet-cor";
 	}
 
-	@GetMapping("/pet/cor/{id}")
+	@GetMapping("/pet/pet-cor/{id}")
 	public String detalhe(@PathVariable("id") int id, Model model) {
 		for (PetCor c : listaPetCor) {
 			if (c.getId() == id) {
@@ -67,6 +67,6 @@ public class CorController {
 				break;
 			}
 		}
-		return "pet/cor";
+		return "pet/pet-cor";
 	}
 }

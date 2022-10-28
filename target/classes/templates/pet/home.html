@@ -5,23 +5,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Adote fácil | Home</title>
-    <link rel="icon" type="imagem/png" href="./imagens/MicrosoftTeams-image.png" />
+    <link rel="icon" type="imagem/png" th:href="@{/MicrosoftTeams-image.png}"/>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
 
     <!-- css boostrap -->
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
-    <!-- css custon -->
-    <link rel="stylesheet" href="./custon.css" />
+   <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" />
+	<!-- css custon -->
+	<link rel="stylesheet" th:href="@{/custon.css}" />
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed"
     style="background-image: './imagens/MicrosoftTeams-image.png';">
 
     <!-- carroucel - slides-->
-    <section class=" avbar-expand-lg">
+    <section class=" navbar-expand-lg">
         <div id="myCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
@@ -67,73 +67,7 @@
     </section>
 
     <!-- navbar - barra de menu -->
-    <nav class="navbar navbar-expand-lg  sticky-top  " style="background-color:rgb(153, 0, 204)">
-        <!-- background-color:rgb(153, 0, 204);; -->
-        <!-- style="margin-left:0px ;margin-right:0px ;" -->
-        <div class="container ">
-            <a class="navbar-brand" href="#">
-                <img src="./imagens/MicrosoftTeams-image.png" alt="" width="30" height="24">
-            </a>
-            <a class="navbar-brand text-white" href="#">Adote fácil</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link  text-white custon-txt-white" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white custon-txt-white" href="#">Galeria</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white custon-txt-white" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Saiba mais
-                        </a>
-                        <ul class="dropdown-menu  ">
-                            <li><a class="dropdown-item " href="#">Adote um animal</a></li>
-                            <li><a class="dropdown-item" href="#">Doe um animal</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Fique por dentro de eventos de sua região</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-outline-light">Dashboard</button>
-                                <button type="button"
-                                    class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually"> </span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Cadastrar raça</a></li>
-                                    <li><a class="dropdown-item" href="/pet/cor">Cadastrar cor</a></li>
-                                    <li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Gerenciar eventos</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-                <div>
-                <a class="btn btn-outline-light" href="/pet/login"> Logar</a>
-                    
-                </div>
-            </div>
-        </div>
-    </nav>
+     <nav th:replace="fragments/navbar :: navbar">...</nav>
 
     <div style="margin-top: 10px;"></div>
 
@@ -336,57 +270,18 @@
         </div>
     </section>
     <!-- footer - rodape - quem somos -->
-    <section class="bd-footer py-1  mt-5  ">
-        <div class="container">
-            <div class="row">
-                <div class="col  mx-1 mb-1  bg-light ">
-                    <h5 class="text-center">Quem somos</h5>
-                    <p class="text-center">Somos um sistema para gerenciar adoções de animais, de uma maneira facil e
-                        intuitiva.</p>
-                </div>
-                <div class="col    mx-1 mb-1   bg-light">
-                    <h5 class="text-center">Missão</h5>
-                    <p class="text-center"> Trazer transparencia e meios onde o usuario possa adotar com facilidade seu
-                        pet.</p>
-                </div>
-                <div class="col  mx-1 mb-1   bg-light">
-                    <h5 class="text-center">Visão</h5>
-                    <p class="text-center">Ser um dos principais meios para adoção de pets no Brasil.</p>
-                </div>
-                <div class="col  mx-1 mb-1 bg-light">
-                    <h5 class="text-center ">Valores</h5>
-                    <p>Trazer felicidade a muitos lares e a muitos animais, por meio de facilitar o seu par pet
-                        perfeito.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
+   <div th:replace="fragments/footer-rodape :: footer-rodape">...</div>
 
     <!-- footer - rodape basico -->
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                    <div class="  text-center ">
-                        <img class="img-fluid" src="imagens/MicrosoftTeams-image.png " alt="" style="height: 5vh;" />
-                    </div>
-                </a>
-                <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
-            </div>
-            <div class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma vida, a sua!</span>
-            </div>
-        </footer>
-    </div>
+    	<div th:replace="fragments/footer :: footer">...</div>
 
     <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
 
-    <script src="./bootstrap/js/bootstrap.js"></script>
-
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+    
     <script>
         const myCarouselElement = document.querySelector('#myCarousel')
         const carousel = new bootstrap.Carousel(myCarouselElement, {

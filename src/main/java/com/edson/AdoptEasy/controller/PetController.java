@@ -34,11 +34,11 @@ public class PetController {
 
 	@GetMapping("/pet")
 	public String novo() {
-		return "pet/index";
+		return "pet/home";
 	}
 	@PostMapping("/pet")
 	public String home() {
-		return "pet/index";
+		return "pet/home";
 	}
 	@GetMapping("/pet/login")
 	public String login() {
