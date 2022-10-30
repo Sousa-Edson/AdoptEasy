@@ -4,7 +4,7 @@
 	<!-- style="margin-left:0px ;margin-right:0px ;" -->
 	<div class="container ">
 		<a class="navbar-brand" href="#">
-			<img th:src="@{../MicrosoftTeams-image.png}" alt="" width="30" height="24">
+			<img th:src="@{/MicrosoftTeams-image.png}" alt="" width="30" height="24">
 		</a>
 		<a class="navbar-brand text-white" href="/pet">Adote fácil</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -17,7 +17,7 @@
 					<a class="nav-link  text-white custon-txt-white" aria-current="page" href="/pet">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-white custon-txt-white" href="#">Galeria</a>
+					<a class="nav-link text-white custon-txt-white" href="/pet/catalogo">Galeria</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-white custon-txt-white" href="#" role="button"
@@ -25,8 +25,8 @@
 						Saiba mais
 					</a>
 					<ul class="dropdown-menu  ">
-						<li><a class="dropdown-item " href="#">Adote um animal</a></li>
-						<li><a class="dropdown-item" href="#">Doe um animal</a></li>
+						<li><a class="dropdown-item " href="/pet/intencao-adotar">Adote um animal</a></li>
+						<li><a class="dropdown-item" href="/pet/cadastroAnimal">Doe um animal</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
@@ -38,19 +38,20 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
 						<div class="btn-group">
-							<button type="button" class="btn btn-outline-light">Dashboard</button>
+							<button type="button" class="btn btn-outline-light"><a class="dropdown-item"
+									href="/pet/dashboard">Dashboard</a></button>
 							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
 								data-bs-toggle="dropdown" aria-expanded="false">
 								<span class="visually"> </span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Cadastrar raça</a></li>
+								<li><a class="dropdown-item" href="/pet/pet-raca">Cadastrar raça</a></li>
 								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>
 								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li><a class="dropdown-item" href="#">Gerenciar eventos</a></li>
+								<li><a class="dropdown-item" href="/pet/postagem">Gerenciar eventos</a></li>
 							</ul>
 						</div>
 					</li>
@@ -58,7 +59,28 @@
 
 			</div>
 			<div>
-				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>
+				<!--				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>-->
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<div class="btn-group">
+							<a type="button" class="btn btn-outline-light"> <i class="bi bi-person-circle">
+									Usuário</i></a>
+							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="visually"> </span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/pet/perfil-pessoa">Perfil</a></li>
+								<!--								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>-->
+								<!--								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>-->
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="/pet/login">Sair</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
 
 			</div>
 		</div>

@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class CatalogoController {
+public class DetalheAnimalController {
 
-    @GetMapping("/pet/intencao-adotar")
+    @GetMapping("/pet/detalhe-animal")
     public String novo() {
-        return "pet/intencao-adotar";
+        return "pet/detalhe-animal";
     }
 
-    @PostMapping("/pet/intencao-adotar")
+    @PostMapping("/pet/detalhe-animal")
     public String home() {
-        return "pet/intencao-adotar";
+        return "pet/detalhe-animal";
     }
 }
