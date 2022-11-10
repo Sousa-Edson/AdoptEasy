@@ -3,6 +3,7 @@ package com.edson.AdoptEasy.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edson.AdoptEasy.model.PetCor;
+import com.edson.AdoptEasy.repository.CorRepository;
 
 @Controller
 public class CorController {
-	private static List<PetCor> listaPetCor = new ArrayList<PetCor>();
+	@Autowired
+	private CorRepository repository;
+    
+    private static List<PetCor> listaPetCor = new ArrayList<PetCor>();
 
 	public int idCor(PetCor cor) {
 		return listaPetCor.size() + 1;
@@ -24,29 +29,13 @@ public class CorController {
 	public ModelAndView novo(PetCor cor) {
 
 		ModelAndView mv = new ModelAndView("redirect:../pet/pet-cor");
-		if (cor.getId() == 0) {
-			cor.setId(idCor(cor));
+		if (cor.getId() == null) {
+			repository.save(cor);
 
-			if (cor.getCor().length() < 2) {
-			} else {
-				listaPetCor.add(cor);
-			}
+			
 		} else {
-			int i = 0;
-			for (PetCor petCor : listaPetCor) {
-				if (petCor.getId() == cor.getId()) {
-					listaPetCor.set(i, cor);
-				}
-				i++;
+			repository.save(cor);
 			}
-			System.out.println("tentando alterar -> " + cor.getId());
-		}
-		cor.setAtivo(true);
-
-		System.out.println(cor.getId());
-
-		// insert no banco de dados
-		mv.addObject("cor", cor);
 
 		return mv;
 	}
@@ -54,19 +43,28 @@ public class CorController {
 	@GetMapping("/pet/pet-cor")
 	public String list(Model model) {
 		model.addAttribute("c", new PetCor());
-		model.addAttribute("cor", listaPetCor);
+		model.addAttribute("cor", repository.findAll());
 		return "pet/pet-cor";
 	}
 
 	@GetMapping("/pet/pet-cor/{id}")
 	public String detalhe(@PathVariable("id") int id, Model model) {
-		for (PetCor c : listaPetCor) {
-			if (c.getId() == id) {
-				model.addAttribute("c", c);
+		PetCor c = repository.findById(id);;  
+			if (c == null) {
+				return "cor-nao-encontrada";
+				
+			}model.addAttribute("c", c);
 				model.addAttribute("cor", listaPetCor);
-				break;
-			}
-		}
 		return "pet/pet-cor";
 	}
-}
+	@GetMapping("/pet/pet-cor/{id}/edit")
+    public String edit(@PathVariable("id") int id, Model model) {
+        PetCor c = repository.findById(id);;  
+            if (c == null) {
+                return "cor-nao-encontrada";
+                
+            }model.addAttribute("c", c);
+                model.addAttribute("cor", listaPetCor);
+        return "pet/pet-cor";
+	
+}}
