@@ -19,23 +19,17 @@ public class CorController {
 	@Autowired
 	private CorRepository repository;
     
-    private static List<PetCor> listaPetCor = new ArrayList<PetCor>();
+  
 
-	public int idCor(PetCor cor) {
-		return listaPetCor.size() + 1;
-	}
+	
 
 	@PostMapping("/pet/pet-cor")
 	public ModelAndView novo(PetCor cor) {
 
 		ModelAndView mv = new ModelAndView("redirect:../pet/pet-cor");
-		if (cor.getId() == null) {
+		
 			repository.save(cor);
 
-			
-		} else {
-			repository.save(cor);
-			}
 
 		return mv;
 	}
@@ -54,7 +48,7 @@ public class CorController {
 				return "cor-nao-encontrada";
 				
 			}model.addAttribute("c", c);
-				model.addAttribute("cor", listaPetCor);
+			
 		return "pet/pet-cor";
 	}
 	@GetMapping("/pet/pet-cor/{id}/edit")
@@ -64,7 +58,7 @@ public class CorController {
                 return "cor-nao-encontrada";
                 
             }model.addAttribute("c", c);
-                model.addAttribute("cor", listaPetCor);
+             
         return "pet/pet-cor";
 	
 }}
