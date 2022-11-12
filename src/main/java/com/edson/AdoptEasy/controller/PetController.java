@@ -11,6 +11,10 @@ public class PetController {
 	public String novo() {
 		return "pet/home";
 	}
+	@GetMapping("/")
+	public String index() {
+		return "pet/home";
+	}
 
 	@PostMapping("/pet")
 	public String home() {
